@@ -6,10 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="W. Jonas Reger">
-<meta name="dcterms.date" content="2021-03-21">
 
-<title>W. Jonas RegerData Science - Regression &amp; Residual Visualization App</title>
+<title>W. Jonas RegerData Science - W. Jonas Reger</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,22 +17,22 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 </style>
 
-<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../../site_libs/clipboard/clipboard.min.js"></script>
-<meta name="quarto:offset" content="../../">
-<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../../site_libs/quarto-search/quarto-search.js"></script>
-<script src="../../site_libs/quarto-html/quarto.js"></script>
-<script src="../../site_libs/quarto-html/popper.min.js"></script>
-<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link id="quarto-text-highlighting-styles" href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet">
-<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link id="quarto-text-highlighting-styles" href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -56,16 +54,16 @@ ul.task-list{list-style: none;}
 }</script>
 
 
-<link rel="stylesheet" href="../../assets/styles/styles.css">
+<link rel="stylesheet" href="../assets/styles/styles.css">
 </head>
 
-<body class="nav-fixed">
+<body class="nav-fixed fullcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
-      <a class="navbar-brand" href="../../index.html">
+      <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">W. Jonas Reger<br>Data Science</span>
   </a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
@@ -74,16 +72,16 @@ ul.task-list{list-style: none;}
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../pages/index.html">Home</a>
+    <a class="nav-link active" href="../pages/index.html" aria-current="page">Home</a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../pages/about.html">Experience</a>
+    <a class="nav-link" href="../pages/about.html">Experience</a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../pages/pvalue-calculator.html">P-Value Calculator</a>
+    <a class="nav-link" href="../pages/pvalue-calculator.html">P-Value Calculator</a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../pages/posts.html">Posts</a>
+    <a class="nav-link" href="../pages/posts.html">Posts</a>
   </li>  
 </ul>
               <div id="quarto-search" class="" title="Search"></div>
@@ -92,56 +90,58 @@ ul.task-list{list-style: none;}
     </nav>
 </header>
 <!-- content -->
-<header id="title-block-header" class="quarto-title-block default page-columns page-full">
-  <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-body">
-      <h1 class="title">Regression &amp; Residual Visualization App</h1>
-                          <div class="quarto-categories">
-                <div class="quarto-category">Visualization</div>
-                <div class="quarto-category">shiny</div>
-                <div class="quarto-category">education</div>
-              </div>
-                  </div>
-  </div>
-    
-  
-
-
-
-  <div class="quarto-title-meta">
-
-      <div>
-      <div class="quarto-title-meta-heading">Author</div>
-      <div class="quarto-title-meta-contents">
-               <p>W. Jonas Reger </p>
-            </div>
-    </div>
-      
-      <div>
-      <div class="quarto-title-meta-heading">Published</div>
-      <div class="quarto-title-meta-contents">
-        <p class="date">March 21, 2021</p>
-      </div>
-    </div>
-      
-    </div>
-    
-  
-  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    </div>
+    
 <!-- main -->
-<main class="content quarto-banner-title-block" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
 
 
 
+<div class="quarto-about-jolla">
+  <img src="../assets/images/profile.jpg" class="about-image
+  round " style="height: 15em; width: 15em;">
+ <header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">W. Jonas Reger</h1>
+</div>
+<div class="quarto-title-meta">
+  </div>
+</header><div id="hero-heading">
+<p>W. Jonas Reger is a Graduate Teaching Assistant at the University of Illinois at Urbana-Champaign. When not innovating on data science education, Jonas enjoys spending time socializing and playing the piano.</p>
+<section id="education" class="level2">
+<h2 class="anchored" data-anchor-id="education">Education</h2>
+<p>University of Illinois at Urbana-Champaign | Urbana, IL</p>
+<ul>
+<li><p>M.S in Statistics | Aug 2021 - Present</p></li>
+<li><p>B.S in Statistics, Minor in Mathematics | Aug 2018 - May 2021</p></li>
+</ul>
+<p>Parkland College | Champaign, IL</p>
+<ul>
+<li>A.S in Computer Science | Aug 2015 - May 2018</li>
+</ul>
+</section>
+<section id="experience" class="level2">
+<h2 class="anchored" data-anchor-id="experience">Experience</h2>
+<p>Sandia National Laboratories | Math &amp; Analytics Graduate Intern | May 2022 - Present</p>
+<p>University of Illinois | Graduate Teaching Assistant | Aug 2021 - Present</p>
+<p>Discovery Partners Institute | Data Science Instructor | May 2021 - Jul 2021</p>
+<p>University of Illinois | Course Assistant | Jan 2019 - Dec 2021</p>
+</section>
+</div> 
+  <hr class="about-sep">
+   <div class="about-links">
+  <a href="https://www.linkedin.com/in/wjonasreger/" class="about-link">
+    <i class="bi bi-linkedin"></i>
+  </a>
+  <a href="https://github.com/wjonasreger" class="about-link">
+    <i class="bi bi-github"></i>
+  </a>
+</div>
+</div>
 
-<p>A visualization tool for linear regression topics.</p>
-<p>Students in Foundational Statistics courses often find the concept and behaviours of prediction errors (residuals) to be confusing and intimidating (Math!). I created this <a href="https://h550e6-wjonasreger.shinyapps.io/rrvisapp/">Interactive Shiny App</a> in order to help students visualize the balancing of prediction errors about the regression line through the use of a ranked color gradient (i.e.&nbsp;the color changes for each data value of increasing prediction error). Other interesting features to explore in this app are the relationships that exist between the regression line, prediction errors, correlation, sample size, and outliers (for y and/or x).</p>
-<p><img src="RRVisApp.png" class="img-fluid"></p>
+
 
 
 

@@ -3,7 +3,7 @@ title: "W. Jonas Reger"
 about:
   id: hero-heading
   template: jolla
-  image: profile.jpg
+  image: assets/images/profile.jpg
   links:
     - icon: linkedin
       href: https://www.linkedin.com/in/wjonasreger/

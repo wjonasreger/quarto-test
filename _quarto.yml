@@ -9,17 +9,16 @@ website:
     left:
       - href: index.qmd
         text: Home
-      - href: about.qmd
+      - href: pages/about.qmd
         text: Experience
-      - pvalue-calculator.qmd
+      - pages/pvalue-calculator.qmd
       - posts.qmd
 
 format:
   html:
     theme:
-      dark: darkly
-      light: flatly
-    css: styles.css
+      - assets/styles/darkbay.scss
+    css: assets/styles/styles.css
     toc: true
 
 

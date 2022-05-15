@@ -1,5 +1,9 @@
 [
   {
+    "listing": "/pages/posts.html",
+    "items": []
+  },
+  {
     "listing": "/posts.html",
     "items": [
       "/posts/welcome/index.html",
