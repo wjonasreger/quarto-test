@@ -1,0 +1,12 @@
+{
+  "hash": "754c9fe1281e78afb68e653aa79f5077",
+  "result": {
+    "markdown": "---\ntitle: \"Post With Code\"\nauthor: \"Harlow Malloc\"\ndate: \"2022-05-14\"\ncategories: [news, code, analysis]\nimage: \"image.jpg\"\n---\n\nThis is a post with executable code.\n\n::: {.cell}\n\n```{.r .cell-code}\nrnorm(5)\n```\n\n::: {.cell-output .cell-output-stdout}\n```\n[1] -1.3699196  0.3896908  0.4349293 -0.9054930  0.7514074\n```\n:::\n:::",
+    "supporting": [],
+    "filters": [],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": null
+  }
+}

@@ -1,0 +1,26 @@
+project:
+  type: website
+  output-dir: docs
+
+website:
+  title: "W. Jonas Reger<br>Data Science"
+  navbar:
+    background: primary
+    left:
+      - href: index.qmd
+        text: Home
+      - href: about.qmd
+        text: Experience
+      - pvalue-calculator.qmd
+      - posts.qmd
+
+format:
+  html:
+    theme:
+      dark: darkly
+      light: flatly
+    css: styles.css
+    toc: true
+
+
+

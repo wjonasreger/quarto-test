@@ -1,0 +1,10 @@
+---
+title: "Welcome To My Website"
+author: "W. Jonas Reger"
+date: "2022-05-11"
+categories: [news]
+---
+
+This is the first post in my newly updated Quarto (formerly Jekyll) website. Welcome! :)
+
+![](thumbnail.jpg)

@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-0.9.317">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>W. Jonas RegerData Science - P-Value Calculator</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link class="quarto-color-scheme" id="quarto-text-highlighting-styles" href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet">
+<link class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles" href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link class="quarto-color-scheme" href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet">
+<link class="quarto-color-scheme quarto-color-alternate" href="site_libs/bootstrap/bootstrap-dark.min.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+<script type="module" src="site_libs/quarto-ojs/esbuild-bundle.js"></script>
+<link href="site_libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">W. Jonas Reger<br>Data Science</span>
+  </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html">Home</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./about.html">Experience</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="./pvalue-calculator.html" aria-current="page">P-Value Calculator</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./posts.html">Posts</a>
+  </li>  
+</ul>
+              <div class="quarto-toggle-container">
+                  <a href="" class="quarto-color-scheme-toggle nav-link" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+              </div>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">P-Value Calculator</h1>
+</div>
+
+
+
+
+
+<div class="quarto-title-meta">
+
+    
+    
+  </div>
+  
+
+</header>
+
+<div class="cell">
+<div class="sourceCode cell-code hidden" id="cb1" data-startfrom="8" data-source-offset="-16"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 7;"><span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>d3 <span class="op">=</span> <span class="pp">require</span>(<span class="st">"d3@7"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<canvas id="myCanvas" width="200" height="100" style="border:1px solid #000000;">
+</canvas>
+<script>
+var c = document.getElementById("myCanvas");
+var ctx = c.getContext("2d");
+ctx.moveTo(0, 0);
+ctx.lineTo(200, 100);
+ctx.stroke();
+</script>
+<script>
+var c = document.getElementById("myCanvas");
+var ctx = c.getContext("2d");
+ctx.beginPath();
+ctx.arc(95, 50, 40, 0, 2 * Math.PI);
+ctx.stroke();
+</script>
+<div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">Normal Distribution (JS)</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">Normal Distribution (OJS)</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false"><span class="math inline">\(X^2\)</span> Distribution</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-4" role="tab" aria-controls="tabset-1-4" aria-selected="false">Students <span class="math inline">\(t\)</span> Distribution</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-5-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-5" role="tab" aria-controls="tabset-1-5" aria-selected="false"><span class="math inline">\(F\)</span> Distribution</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<div class="panel-grid layout-sidebar ms-md-0 layout-sidebar-left">
+<div class="panel-sidebar card bg-light p-2 g-col-24 g-col-lg-7">
+
+</div>
+<div class="panel-fill panel-grid g-col-24 g-col-lg-17 pt-3 pt-lg-0">
+<div class="g-col-24">
+<div class="panel-fill quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell quarto-layout-cell" style="flex-basis: 100.0%;justify-content: center;">
+<div class="sourceCode cell-code" id="cb2" data-startfrom="39" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 38;"><span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> { pnorm<span class="op">,</span> circle<span class="op">,</span> dnorm } <span class="im">from</span> <span class="st">"./pvalue.js"</span></span>
+<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a><span class="fu">dnorm</span>(<span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-2-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-2-2" data-nodetype="expression">
+
+</div>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb3" data-startfrom="42" data-source-offset="-61"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 41;"><span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a>{</span>
+<span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> context <span class="op">=</span> DOM<span class="op">.</span><span class="fu">context2d</span>(<span class="dv">480</span><span class="op">,</span> <span class="dv">270</span>)<span class="op">;</span></span>
+<span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a>  <span class="fu">circle</span>(context)</span>
+<span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a>  context<span class="op">.</span><span class="fu">beginPath</span>()<span class="op">;</span></span>
+<span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a>  context<span class="op">.</span><span class="fu">moveTo</span>(<span class="dv">0</span><span class="op">,</span> <span class="dv">0</span>)<span class="op">;</span></span>
+<span id="cb3-47"><a href="#cb3-47" aria-hidden="true" tabindex="-1"></a>  context<span class="op">.</span><span class="fu">lineTo</span>(<span class="dv">500</span><span class="op">,</span><span class="dv">500</span>)<span class="op">;</span></span>
+<span id="cb3-48"><a href="#cb3-48" aria-hidden="true" tabindex="-1"></a>  context<span class="op">.</span><span class="fu">stroke</span>()<span class="op">;</span></span>
+<span id="cb3-49"><a href="#cb3-49" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> context<span class="op">.</span><span class="at">canvas</span><span class="op">;</span> </span>
+<span id="cb3-50"><a href="#cb3-50" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-2-3" data-nodetype="expression">
+
+</div>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb4" data-startfrom="52" data-source-offset="-247"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 51;"><span id="cb4-52"><a href="#cb4-52" aria-hidden="true" tabindex="-1"></a>zscore1 <span class="op">=</span> <span class="dv">2</span></span>
+<span id="cb4-53"><a href="#cb4-53" aria-hidden="true" tabindex="-1"></a>direction1 <span class="op">=</span> <span class="st">"left"</span></span>
+<span id="cb4-54"><a href="#cb4-54" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(zscore1<span class="op">,</span> direction1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-2-4" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-2-5" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-2-6" data-nodetype="expression">
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<div class="panel-grid layout-sidebar ms-md-0 layout-sidebar-left">
+<div class="panel-sidebar card bg-light p-2 g-col-24 g-col-lg-7">
+<div class="cell">
+<div class="sourceCode cell-code hidden" id="cb5" data-startfrom="66" data-source-offset="-17"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 65;"><span id="cb5-66"><a href="#cb5-66" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">set</span>(input<span class="op">,</span> value) {</span>
+<span id="cb5-67"><a href="#cb5-67" aria-hidden="true" tabindex="-1"></a>  input<span class="op">.</span><span class="at">value</span> <span class="op">=</span> value<span class="op">;</span></span>
+<span id="cb5-68"><a href="#cb5-68" aria-hidden="true" tabindex="-1"></a>  input<span class="op">.</span><span class="fu">dispatchEvent</span>(<span class="kw">new</span> <span class="bu">Event</span>(<span class="st">"input"</span><span class="op">,</span> {<span class="dt">bubbles</span><span class="op">:</span> <span class="kw">true</span>}))<span class="op">;</span></span>
+<span id="cb5-69"><a href="#cb5-69" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb5-70"><a href="#cb5-70" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-71"><a href="#cb5-71" aria-hidden="true" tabindex="-1"></a>viewof direction <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">radio</span>(</span>
+<span id="cb5-72"><a href="#cb5-72" aria-hidden="true" tabindex="-1"></a>  [<span class="st">"left"</span><span class="op">,</span> <span class="st">"middle"</span><span class="op">,</span> <span class="st">"right"</span><span class="op">,</span> <span class="st">"two-sided"</span>]<span class="op">,</span></span>
+<span id="cb5-73"><a href="#cb5-73" aria-hidden="true" tabindex="-1"></a>  {<span class="dt">value</span><span class="op">:</span> <span class="st">"left"</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Direction"</span>}</span>
+<span id="cb5-74"><a href="#cb5-74" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb5-75"><a href="#cb5-75" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-76"><a href="#cb5-76" aria-hidden="true" tabindex="-1"></a>viewof zscore <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>(</span>
+<span id="cb5-77"><a href="#cb5-77" aria-hidden="true" tabindex="-1"></a>  [<span class="op">-</span><span class="dv">10</span><span class="op">,</span> <span class="dv">10</span>]<span class="op">,</span> </span>
+<span id="cb5-78"><a href="#cb5-78" aria-hidden="true" tabindex="-1"></a>  {<span class="dt">value</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="fl">0.01</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Z Score:"</span>}</span>
+<span id="cb5-79"><a href="#cb5-79" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb5-80"><a href="#cb5-80" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-81"><a href="#cb5-81" aria-hidden="true" tabindex="-1"></a>viewof area <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>(</span>
+<span id="cb5-82"><a href="#cb5-82" aria-hidden="true" tabindex="-1"></a>  [<span class="dv">0</span><span class="op">,</span> <span class="dv">1</span>]<span class="op">,</span></span>
+<span id="cb5-83"><a href="#cb5-83" aria-hidden="true" tabindex="-1"></a>  {<span class="dt">value</span><span class="op">:</span> <span class="fl">0.5</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Area"</span>}</span>
+<span id="cb5-84"><a href="#cb5-84" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb5-85"><a href="#cb5-85" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-86"><a href="#cb5-86" aria-hidden="true" tabindex="-1"></a>Inputs<span class="op">.</span><span class="fu">button</span>(<span class="st">"Calculate Z-Score"</span><span class="op">,</span> () <span class="kw">=&gt;</span> viewof zscore<span class="op">.</span><span class="at">value</span> <span class="op">=</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-3-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-3-2" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-3-3" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-3-4" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-3-5" data-nodetype="expression">
+
+</div>
+</div>
+</div>
+<div class="sourceCode cell-code hidden" id="cb6" data-startfrom="87" data-source-offset="-478"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 86;"><span id="cb6-87"><a href="#cb6-87" aria-hidden="true" tabindex="-1"></a>zscore</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-3-6" data-nodetype="expression">
+
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="panel-fill panel-grid g-col-24 g-col-lg-17 pt-3 pt-lg-0">
+<div class="g-col-24">
+<div class="panel-fill quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell quarto-layout-cell" style="flex-basis: 100.0%;justify-content: center;">
+<div class="sourceCode cell-code hidden" id="cb7" data-startfrom="94" data-source-offset="-16"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 93;"><span id="cb7-94"><a href="#cb7-94" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(zscore<span class="op">,</span> direction)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-4" data-nodetype="expression">
+
+</div>
+</div>
+</div>
+</div>
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="sourceCode cell-code hidden" id="cb8" data-startfrom="99" data-source-offset="-16"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 98;"><span id="cb8-99"><a href="#cb8-99" aria-hidden="true" tabindex="-1"></a>norm_data <span class="op">=</span> <span class="cf">await</span> <span class="fu">FileAttachment</span>(<span class="st">"normal-table.csv"</span>)<span class="op">.</span><span class="fu">csv</span>({ <span class="dt">typed</span><span class="op">:</span> <span class="kw">true</span> })</span>
+<span id="cb8-100"><a href="#cb8-100" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-101"><a href="#cb8-101" aria-hidden="true" tabindex="-1"></a>norm_area <span class="op">=</span> norm_data<span class="op">.</span><span class="fu">map</span>(<span class="kw">function</span>(score) {</span>
+<span id="cb8-102"><a href="#cb8-102" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (direction<span class="op">===</span><span class="st">"left"</span>) {</span>
+<span id="cb8-103"><a href="#cb8-103" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> score<span class="op">.</span><span class="at">Z</span> <span class="op">&gt;</span> zscore <span class="op">?</span> <span class="kw">NaN</span> <span class="op">:</span> score</span>
+<span id="cb8-104"><a href="#cb8-104" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span> (direction<span class="op">===</span><span class="st">"right"</span>) {</span>
+<span id="cb8-105"><a href="#cb8-105" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> score<span class="op">.</span><span class="at">Z</span> <span class="op">&lt;</span> zscore <span class="op">?</span> <span class="kw">NaN</span> <span class="op">:</span> score</span>
+<span id="cb8-106"><a href="#cb8-106" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span> (direction<span class="op">===</span><span class="st">"middle"</span>) {</span>
+<span id="cb8-107"><a href="#cb8-107" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="op">-</span><span class="bu">Math</span><span class="op">.</span><span class="fu">abs</span>(zscore) <span class="op">&gt;</span> score<span class="op">.</span><span class="at">Z</span> <span class="op">||</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">abs</span>(zscore) <span class="op">&lt;</span> score<span class="op">.</span><span class="at">Z</span> <span class="op">?</span> <span class="kw">NaN</span> <span class="op">:</span> score</span>
+<span id="cb8-108"><a href="#cb8-108" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb8-109"><a href="#cb8-109" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="op">-</span><span class="bu">Math</span><span class="op">.</span><span class="fu">abs</span>(zscore) <span class="op">&lt;</span> score<span class="op">.</span><span class="at">Z</span> <span class="op">&amp;&amp;</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">abs</span>(zscore) <span class="op">&gt;</span> score<span class="op">.</span><span class="at">Z</span> <span class="op">?</span> <span class="kw">NaN</span> <span class="op">:</span> score</span>
+<span id="cb8-110"><a href="#cb8-110" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb8-111"><a href="#cb8-111" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb8-112"><a href="#cb8-112" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-113"><a href="#cb8-113" aria-hidden="true" tabindex="-1"></a>Plot<span class="op">.</span><span class="fu">plot</span>({</span>
+<span id="cb8-114"><a href="#cb8-114" aria-hidden="true" tabindex="-1"></a>  <span class="dt">grid</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span></span>
+<span id="cb8-115"><a href="#cb8-115" aria-hidden="true" tabindex="-1"></a>  <span class="dt">style</span><span class="op">:</span> <span class="st">"max-width:100%;"</span><span class="op">,</span></span>
+<span id="cb8-116"><a href="#cb8-116" aria-hidden="true" tabindex="-1"></a>  <span class="dt">marks</span><span class="op">:</span> [</span>
+<span id="cb8-117"><a href="#cb8-117" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">line</span>(norm_data<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="st">"Z"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"PDF"</span>})<span class="op">,</span></span>
+<span id="cb8-118"><a href="#cb8-118" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">areaY</span>(norm_area<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="st">"Z"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"PDF"</span><span class="op">,</span> <span class="dt">fillOpacity</span><span class="op">:</span> <span class="fl">0.25</span>})</span>
+<span id="cb8-119"><a href="#cb8-119" aria-hidden="true" tabindex="-1"></a>  ]</span>
+<span id="cb8-120"><a href="#cb8-120" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-5-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-5-2" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-5-3" data-nodetype="expression">
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-1-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-3-tab">
+
+</div>
+<div id="tabset-1-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-4-tab">
+
+</div>
+<div id="tabset-1-5" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-5-tab">
+
+</div>
+</div>
+</div>
+
+
+
+</main> <!-- /main -->
+<script type="ojs-module-contents">
+{"contents":[{"methodName":"interpret","cellName":"ojs-cell-1","inline":false,"source":"//| echo: false\nd3 = require(\"d3@7\")\n"},{"methodName":"interpret","cellName":"ojs-cell-2","inline":false,"source":"import { pnorm, circle, dnorm } from \"./pvalue.js\"\ndnorm(0)\n\n{\n  const context = DOM.context2d(480, 270);\n  circle(context)\n  context.beginPath();\n  context.moveTo(0, 0);\n  context.lineTo(500,500);\n  context.stroke();\n  return context.canvas; \n}\n\nzscore1 = 2\ndirection1 = \"left\"\npnorm(zscore1, direction1)\n"},{"methodName":"interpret","cellName":"ojs-cell-3","inline":false,"source":"//| echo: false\n\nfunction set(input, value) {\n  input.value = value;\n  input.dispatchEvent(new Event(\"input\", {bubbles: true}));\n}\n\nviewof direction = Inputs.radio(\n  [\"left\", \"middle\", \"right\", \"two-sided\"],\n  {value: \"left\", label: \"Direction\"}\n)\n\nviewof zscore = Inputs.range(\n  [-10, 10], \n  {value: 1, step: 0.01, label: \"Z Score:\"}\n)\n\nviewof area = Inputs.range(\n  [0, 1],\n  {value: 0.5, label: \"Area\"}\n)\n\nInputs.button(\"Calculate Z-Score\", () => viewof zscore.value = 2)\nzscore\n"},{"methodName":"interpret","cellName":"ojs-cell-4","inline":false,"source":"//| echo: false\npnorm(zscore, direction) \n"},{"methodName":"interpret","cellName":"ojs-cell-5","inline":false,"source":"//| echo: false\nnorm_data = await FileAttachment(\"normal-table.csv\").csv({ typed: true })\n\nnorm_area = norm_data.map(function(score) {\n  if (direction===\"left\") {\n    return score.Z > zscore ? NaN : score\n  } else if (direction===\"right\") {\n    return score.Z < zscore ? NaN : score\n  } else if (direction===\"middle\") {\n    return -Math.abs(zscore) > score.Z || Math.abs(zscore) < score.Z ? NaN : score\n  } else {\n    return -Math.abs(zscore) < score.Z && Math.abs(zscore) > score.Z ? NaN : score\n  }\n})\n\nPlot.plot({\n  grid: true,\n  style: \"max-width:100%;\",\n  marks: [\n    Plot.line(norm_data, {x: \"Z\", y: \"PDF\"}),\n    Plot.areaY(norm_area, {x: \"Z\", y: \"PDF\", fillOpacity: 0.25})\n  ]\n})\n"},{"methodName":"interpretQuiet","source":"shinyInput('direction')"},{"methodName":"interpretQuiet","source":"shinyInput('zscore')"},{"methodName":"interpretQuiet","source":"shinyInput('area')"}]}
+</script>
+<script type="module">
+window._ojs.paths.runtimeToDoc = "../..";
+window._ojs.paths.runtimeToRoot = "../..";
+window._ojs.paths.docToRoot = "";
+window._ojs.selfContained = false;
+window._ojs.runtime.interpretFromScriptTags();
+</script>
+<script type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+    } else {
+      disableStylesheet(alternateStylesheets);
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  let localAlternateSentinel = 'alternate';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } 
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      let href = ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

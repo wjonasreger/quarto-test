@@ -1,0 +1,13 @@
+---
+title: "Regression & Residual Visualization App"
+author: "W. Jonas Reger"
+date: "2021-03-21"
+categories: [Visualization, shiny, education]
+image: "RRVisApp.png"
+---
+
+A visualization tool for linear regression topics.
+
+Students in Foundational Statistics courses often find the concept and behaviours of prediction errors (residuals) to be confusing and intimidating (Math!). I created this [Interactive Shiny App](https://h550e6-wjonasreger.shinyapps.io/rrvisapp/) in order to help students visualize the balancing of prediction errors about the regression line through the use of a ranked color gradient (i.e. the color changes for each data value of increasing prediction error). Other interesting features to explore in this app are the relationships that exist between the regression line, prediction errors, correlation, sample size, and outliers (for y and/or x).
+
+![](RRVisApp.png)

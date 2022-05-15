@@ -1,0 +1,90 @@
+---
+title: "Curriculum Vitae"
+---
+
+# Education
+
+University of Illinois at Urbana-Champaign | Urbana, IL
+
+* M.S in Statistics | Aug 2021 -- Present
+    * Relevant Coursework: Categorical Data Analysis, Stochastic Processes, Advanced Data Analytics, Statistical Data Management, Mathematical Statistics
+
+* B.S in Statistics, Minor in Mathematics | Aug 2018 -- May 2021
+    * Relevant Coursework: Statistical Computing, Unsupervised Learning, Basics of Statistical Learning, Professional Statistics, Applied Regression and Design, Methods of Applied Statistics, Statistics & Probability, Statistical Analysis, Linear Algebra, Fundamental Mathematics
+
+Parkland College | Champaign, IL
+
+* A.S in Computer Science | Aug 2015 -- May 2018
+    * Relevant Coursework: Data Structures, Computer Science, Discrete Mathematics, Calculus, Statistics
+
+# Experience
+
+Sandia National Laboratories | MARTIANS Program
+
+* Math & Analytics Graduate Intern | May 2022 - Present
+
+University of Illinois | Department of Statistics
+
+* Graduate Teaching Assistant | Aug 2021 -- Present
+    * Instructor
+        * STAT 100: Statistics - [[Spring 2022]](https://stat100website.web.illinois.edu/pages/staff.html)
+        * Teaching an online class of 100 students with weekly lecture videos covering introductory topics in Statistics
+        * Developing new AI powered course tools to improve staff to student impact for small staff to student ratios
+        * Maintaining the [STAT 100 Course Website](https://stat100website.web.illinois.edu/pages/staff.html) and Discord Server
+
+    * Teaching Assistant
+        * STAT 107: Data Science Discovery - [[Fall 2021]](https://discovery.cs.illinois.edu/stat107-fa21/staff/)
+        * Instructed class discussions with 50 students on assignments covering elementary Data Science topics such as Python, Data, Probability, and Statistics
+        * Assisted with developing lab assignments, holding office hours, and grading
+
+* Undergraduate Course Assistant | Jan 2019 -- Dec 2021
+    * Instructed students in office hours on homework and studies to reinforce their learning
+    * Assisted with test administration, curriculum development, and grading
+    * Developed and maintained the [STAT 100 Course Website](https://stat100website.web.illinois.edu/pages/staff.html)
+    * Advised students with analysis projects on topics such as network analysis and predictive modeling
+    * Courses
+        * STAT 100: Statistics - [[Fall 2021]](https://stat100website.web.illinois.edu/archive/F21/pages/staff.html), [[Spring 2021]](https://stat100website.web.illinois.edu/archive/S21/pages/staff.html), [[Fall 2020]](https://stat100website.web.illinois.edu/archive/F20/pages/staff.html), [Summer 2020], [[Spring 2020]](https://stat100website.web.illinois.edu/archive/S20/pages/staff.html), [Fall 2019], [Spring 2019]
+        * STAT 400: Statistics & Probability I - [Spring 2019], [Spring 2020]
+        * STAT 410: Statistics & Probability II - [Spring 2020]
+        * STAT 420: Methods of Applied Statistics - [Summer 2019], [Fall 2019]
+        * STAT 432: Basics of Statistical Learning - [[Fall 2020]](https://fall-2020.stat432.org)
+        * Blackwell Summer Scholars Program - [Summer 2021]
+
+University of Illinois | Discovery Partners Institute
+
+* Data Science Instructor | May 2021 -- Jul 2021
+    * Digital Scholars "Discovering Data Science" Course [[Summer 2021]](https://wjonasreger.github.io/DigitalScholars_DataScience/)
+    * Program Description: Developed and taught the new "Discovering Data Science" course of DPI and UIC CHANCE's Digital Scholars Program, which is a five-week intensive summer program for high school and incoming college students of Chicago to support and develop promising and diverse tech talent in Illinois. 
+
+University of Illinois | Champaign Unit 4 School District
+
+* Computer Science Intern | Jan 2014 - May 2014
+    * Developed skills in Python and learned about topics in computer science and supercomputing applications. Mentored at NCSA's National Petascale Computing Facility.
+
+American Cancer Society | University of Illinois
+
+* Cancer Research Intern | May 2013 - Aug 2013
+    * Led a [research project](https://wjonasreger.github.io/website/assets/docs/publications/ACS%20Internship%20Article%20(2020%20reformat).pdf) with a Materials Science and Engineering research team at University of Illinois Urbana-Champaign. Analyzed the use of peptide surfaces to study the reprogramming of malignant melanoma cells towards identification of a cancer stem cell state.
+
+# Tools
+
+R/Rstudio | Python/Jupyter | GitHub/Docker | Web/Jekyll/Quarto | C/C++/Java | Discord
+
+# Projects & Publications
+
+* STAT 100 Discord Bot | Nov 2021 - Present
+* [Discovering Data Science Course Website](https://wjonasreger.github.io/DigitalScholars_DataScience/) | May 2021 - Aug 2021
+* [Movies on Netflix, Prime Video, Hulu and Disney+ Cluster Data Analysis](https://github.com/wjonasreger/STAT430_FinalProject) | Jan 2021 - May 2021
+* [Gas Turbine Carbon Monoxide Emissions Data Analysis](https://github.com/wjonasreger/STAT443_FinalProject) | Jan 2021 - May 2021
+* [Visual Statistics Shiny App](https://h550e6-wjonasreger.shinyapps.io/rrvisapp/) | Feb 2021 - Mar 2021
+* [UIUC STAT 100 Course Website](https://stat100website.web.illinois.edu) | Aug 2019 - Current
+* [Walmart Sales During Stormy Weather Data Analysis](https://wjonasreger.github.io/website/assets/docs/publications/walmart_425_outline.pdf) | Fall 2019
+* Reger, W. & Kilian K. (2013). [Using peptide surfaces to study the reprogramming of malignant melanoma cells towards identification of a cancer stem cell state](https://wjonasreger.github.io/website/assets/docs/publications/ACS%20Internship%20Article%20(2020%20reformat).pdf). American Cancer Society Summer High School Research Program, 251-263 | Summer 2013
+
+# Awards & Accomplishments
+
+* [LAS Impact Award](https://las.illinois.edu/covid19/award) (STAT 100 Course Assistant Team), LAS College, University of Illinois at Urbana-Champaign | April 2021
+    * Recognized for inspiring efforts during COVID-19
+* Eagle Scout Award, Boy Scouts of America | Feb 2014
+* Second Degree Black Belt, American Taekwondo Association | July 2012
+* First Degree Black Belt, American Taekwondo Association | June 2011

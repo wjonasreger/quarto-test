@@ -1,0 +1,20 @@
+[
+  {
+    "listing": "/index.html",
+    "items": [
+      "/about.html",
+      "/pvalue-calculator.html",
+      "/posts.html",
+      "/posts/regression-residual-visualization-app/index.html",
+      "/posts/welcome/index.html"
+    ]
+  },
+  {
+    "listing": "/posts.html",
+    "items": [
+      "/posts/welcome/index.html",
+      "/posts/random-guessing-mc-exam/index.html",
+      "/posts/regression-residual-visualization-app/index.html"
+    ]
+  }
+]

@@ -1,0 +1,41 @@
+---
+title: "W. Jonas Reger"
+about:
+  id: hero-heading
+  template: jolla
+  image: profile.jpg
+  links:
+    - icon: linkedin
+      href: https://www.linkedin.com/in/wjonasreger/
+    - icon: github
+      href: https://github.com/wjonasreger
+---
+
+:::{#hero-heading}
+
+W. Jonas Reger is a Graduate Teaching Assistant at the University of Illinois at Urbana-Champaign. When not innovating on data science education, Jonas enjoys spending time socializing and playing the piano.
+
+## Education
+
+University of Illinois at Urbana-Champaign | Urbana, IL
+
+* M.S in Statistics | Aug 2021 - Present
+
+* B.S in Statistics, Minor in Mathematics | Aug 2018 - May 2021
+
+Parkland College | Champaign, IL
+
+* A.S in Computer Science | Aug 2015 - May 2018
+
+## Experience
+
+Sandia National Laboratories | Math & Analytics Graduate Intern | May 2022 - Present
+
+University of Illinois | Graduate Teaching Assistant | Aug 2021 - Present
+
+Discovery Partners Institute | Data Science Instructor | May 2021 - Jul 2021
+
+University of Illinois | Course Assistant | Jan 2019 - Dec 2021
+
+:::
+
