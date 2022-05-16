@@ -146,7 +146,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <a class="nav-link active" href="../pages/pvalue-calculator.html" aria-current="page">P-Value Calculator</a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../pages/posts.html">Posts</a>
+    <a class="nav-link" href="../posts.html">Posts</a>
   </li>  
 </ul>
               <div id="quarto-search" class="" title="Search"></div>
@@ -191,7 +191,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 <div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">Normal Distribution (JS)</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">Normal Distribution (OJS)</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">Normal Distribution (Canvas)</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">Normal Distribution (OJS)</a></li></ul>
 <div class="tab-content">
 <div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
 <div class="panel-grid layout-sidebar ms-md-0 layout-sidebar-left">
@@ -253,14 +253,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 </div>
-<div class="sourceCode cell-code hidden" id="cb3" data-startfrom="40" data-source-offset="-480"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 39;"><span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a>zscore</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<div>
-<div id="ojs-cell-2-6" data-nodetype="expression">
-
-</div>
-</div>
-</div>
 </div>
 </div>
 <div class="panel-fill panel-grid g-col-24 g-col-lg-17 pt-3 pt-lg-0">
@@ -268,13 +260,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="panel-fill quarto-layout-panel">
 <div class="quarto-layout-row quarto-layout-valign-top">
 <div class="cell quarto-layout-cell" style="flex-basis: 100.0%;justify-content: center;">
-<div class="sourceCode cell-code hidden" id="cb4" data-startfrom="48" data-source-offset="-16"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 47;"><span id="cb4-48"><a href="#cb4-48" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> { pnorm<span class="op">,</span> dnorm<span class="op">,</span> plotGraph } <span class="im">from</span> <span class="st">"../assets/js/pvalue.js"</span></span>
-<span id="cb4-49"><a href="#cb4-49" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-50"><a href="#cb4-50" aria-hidden="true" tabindex="-1"></a>{</span>
-<span id="cb4-51"><a href="#cb4-51" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> context <span class="op">=</span> DOM<span class="op">.</span><span class="fu">context2d</span>(<span class="dv">480</span><span class="op">,</span> <span class="dv">270</span>)<span class="op">;</span></span>
-<span id="cb4-52"><a href="#cb4-52" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plotGraph</span>(context<span class="op">,</span> zscore<span class="op">,</span> direction)</span>
-<span id="cb4-53"><a href="#cb4-53" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> context<span class="op">.</span><span class="at">canvas</span><span class="op">;</span> </span>
-<span id="cb4-54"><a href="#cb4-54" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb3" data-startfrom="47" data-source-offset="-16"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 46;"><span id="cb3-47"><a href="#cb3-47" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> { plotGraph } <span class="im">from</span> <span class="st">"../assets/js/canvas.js"</span></span>
+<span id="cb3-48"><a href="#cb3-48" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> { pnorm } <span class="im">from</span> <span class="st">"../assets/js/normal.js"</span></span>
+<span id="cb3-49"><a href="#cb3-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-50"><a href="#cb3-50" aria-hidden="true" tabindex="-1"></a>{</span>
+<span id="cb3-51"><a href="#cb3-51" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> context <span class="op">=</span> DOM<span class="op">.</span><span class="fu">context2d</span>(<span class="dv">480</span><span class="op">,</span> <span class="dv">270</span>)<span class="op">;</span></span>
+<span id="cb3-52"><a href="#cb3-52" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plotGraph</span>(context<span class="op">,</span> zscore<span class="op">,</span> direction)</span>
+<span id="cb3-53"><a href="#cb3-53" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> context<span class="op">.</span><span class="at">canvas</span><span class="op">;</span> </span>
+<span id="cb3-54"><a href="#cb3-54" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <div id="ojs-cell-3-1" data-nodetype="declaration">
@@ -284,7 +277,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div class="cell-output cell-output-display">
 <div>
-<div id="ojs-cell-3-2" data-nodetype="expression">
+<div id="ojs-cell-3-2" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-3-3" data-nodetype="expression">
 
 </div>
 </div>
@@ -295,66 +295,74 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 </div>
+<p>A work in progress…</p>
 </div>
 <div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
 <div class="panel-grid layout-sidebar ms-md-0 layout-sidebar-left">
 <div class="panel-sidebar card bg-light p-2 g-col-24 g-col-lg-7">
+<div class="cell">
+<div class="sourceCode cell-code hidden" id="cb4" data-startfrom="67" data-source-offset="-17"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 66;"><span id="cb4-67"><a href="#cb4-67" aria-hidden="true" tabindex="-1"></a>viewof direction2 <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">radio</span>(</span>
+<span id="cb4-68"><a href="#cb4-68" aria-hidden="true" tabindex="-1"></a>  [<span class="st">"left"</span><span class="op">,</span> <span class="st">"middle"</span><span class="op">,</span> <span class="st">"right"</span><span class="op">,</span> <span class="st">"two-sided"</span>]<span class="op">,</span></span>
+<span id="cb4-69"><a href="#cb4-69" aria-hidden="true" tabindex="-1"></a>  {<span class="dt">value</span><span class="op">:</span> <span class="st">"left"</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Direction"</span>}</span>
+<span id="cb4-70"><a href="#cb4-70" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb4-71"><a href="#cb4-71" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-72"><a href="#cb4-72" aria-hidden="true" tabindex="-1"></a>viewof zscore2 <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>(</span>
+<span id="cb4-73"><a href="#cb4-73" aria-hidden="true" tabindex="-1"></a>  [<span class="op">-</span><span class="fl">3.5</span><span class="op">,</span> <span class="fl">3.5</span>]<span class="op">,</span> </span>
+<span id="cb4-74"><a href="#cb4-74" aria-hidden="true" tabindex="-1"></a>  {<span class="dt">value</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="fl">0.01</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Z Score:"</span>}</span>
+<span id="cb4-75"><a href="#cb4-75" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb4-76"><a href="#cb4-76" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-77"><a href="#cb4-77" aria-hidden="true" tabindex="-1"></a>viewof area2 <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>(</span>
+<span id="cb4-78"><a href="#cb4-78" aria-hidden="true" tabindex="-1"></a>  [<span class="dv">0</span><span class="op">,</span> <span class="dv">1</span>]<span class="op">,</span></span>
+<span id="cb4-79"><a href="#cb4-79" aria-hidden="true" tabindex="-1"></a>  {<span class="dt">value</span><span class="op">:</span> <span class="fl">0.5</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Area"</span>}</span>
+<span id="cb4-80"><a href="#cb4-80" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb4-81"><a href="#cb4-81" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-82"><a href="#cb4-82" aria-hidden="true" tabindex="-1"></a>Inputs<span class="op">.</span><span class="fu">button</span>(<span class="st">"Calculate Z-Score"</span><span class="op">,</span> () <span class="kw">=&gt;</span> viewof zscore2<span class="op">.</span><span class="at">value</span> <span class="op">=</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-4-1" data-nodetype="declaration">
 
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-4-2" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-4-3" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-4-4" data-nodetype="expression">
+
+</div>
+</div>
+</div>
+<div class="sourceCode cell-code hidden" id="cb5" data-startfrom="83" data-source-offset="-369"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 82;"><span id="cb5-83"><a href="#cb5-83" aria-hidden="true" tabindex="-1"></a>zscore2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-4-5" data-nodetype="expression">
+
+</div>
+</div>
+</div>
+</div>
 </div>
 <div class="panel-fill panel-grid g-col-24 g-col-lg-17 pt-3 pt-lg-0">
 <div class="g-col-24">
 <div class="panel-fill quarto-layout-panel">
 <div class="quarto-layout-row quarto-layout-valign-top">
 <div class="cell quarto-layout-cell" style="flex-basis: 100.0%;justify-content: center;">
-<div class="sourceCode cell-code hidden" id="cb5" data-startfrom="67" data-source-offset="-16"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 66;"><span id="cb5-67"><a href="#cb5-67" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(zscore<span class="op">,</span> direction)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6" data-startfrom="91" data-source-offset="-15"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 90;"><span id="cb6-91"><a href="#cb6-91" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="dv">1</span><span class="op">,</span> <span class="st">"left"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div id="ojs-cell-4" data-nodetype="expression">
-
-</div>
-</div>
-</div>
-</div>
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<div class="sourceCode cell-code hidden" id="cb6" data-startfrom="72" data-source-offset="-16"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 71;"><span id="cb6-72"><a href="#cb6-72" aria-hidden="true" tabindex="-1"></a>norm_data <span class="op">=</span> <span class="cf">await</span> <span class="fu">FileAttachment</span>(<span class="st">"../assets/documents/normal-table.csv"</span>)<span class="op">.</span><span class="fu">csv</span>({ <span class="dt">typed</span><span class="op">:</span> <span class="kw">true</span> })</span>
-<span id="cb6-73"><a href="#cb6-73" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-74"><a href="#cb6-74" aria-hidden="true" tabindex="-1"></a>norm_area <span class="op">=</span> norm_data<span class="op">.</span><span class="fu">map</span>(<span class="kw">function</span>(score) {</span>
-<span id="cb6-75"><a href="#cb6-75" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (direction<span class="op">===</span><span class="st">"left"</span>) {</span>
-<span id="cb6-76"><a href="#cb6-76" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> score<span class="op">.</span><span class="at">Z</span> <span class="op">&gt;</span> zscore <span class="op">?</span> <span class="kw">NaN</span> <span class="op">:</span> score</span>
-<span id="cb6-77"><a href="#cb6-77" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span> (direction<span class="op">===</span><span class="st">"right"</span>) {</span>
-<span id="cb6-78"><a href="#cb6-78" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> score<span class="op">.</span><span class="at">Z</span> <span class="op">&lt;</span> zscore <span class="op">?</span> <span class="kw">NaN</span> <span class="op">:</span> score</span>
-<span id="cb6-79"><a href="#cb6-79" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span> (direction<span class="op">===</span><span class="st">"middle"</span>) {</span>
-<span id="cb6-80"><a href="#cb6-80" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="op">-</span><span class="bu">Math</span><span class="op">.</span><span class="fu">abs</span>(zscore) <span class="op">&gt;</span> score<span class="op">.</span><span class="at">Z</span> <span class="op">||</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">abs</span>(zscore) <span class="op">&lt;</span> score<span class="op">.</span><span class="at">Z</span> <span class="op">?</span> <span class="kw">NaN</span> <span class="op">:</span> score</span>
-<span id="cb6-81"><a href="#cb6-81" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
-<span id="cb6-82"><a href="#cb6-82" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="op">-</span><span class="bu">Math</span><span class="op">.</span><span class="fu">abs</span>(zscore) <span class="op">&lt;</span> score<span class="op">.</span><span class="at">Z</span> <span class="op">&amp;&amp;</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">abs</span>(zscore) <span class="op">&gt;</span> score<span class="op">.</span><span class="at">Z</span> <span class="op">?</span> <span class="kw">NaN</span> <span class="op">:</span> score</span>
-<span id="cb6-83"><a href="#cb6-83" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb6-84"><a href="#cb6-84" aria-hidden="true" tabindex="-1"></a>})</span>
-<span id="cb6-85"><a href="#cb6-85" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-86"><a href="#cb6-86" aria-hidden="true" tabindex="-1"></a>Plot<span class="op">.</span><span class="fu">plot</span>({</span>
-<span id="cb6-87"><a href="#cb6-87" aria-hidden="true" tabindex="-1"></a>  <span class="dt">grid</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span></span>
-<span id="cb6-88"><a href="#cb6-88" aria-hidden="true" tabindex="-1"></a>  <span class="dt">style</span><span class="op">:</span> <span class="st">"max-width:100%;"</span><span class="op">,</span></span>
-<span id="cb6-89"><a href="#cb6-89" aria-hidden="true" tabindex="-1"></a>  <span class="dt">marks</span><span class="op">:</span> [</span>
-<span id="cb6-90"><a href="#cb6-90" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">line</span>(norm_data<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="st">"Z"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"PDF"</span>})<span class="op">,</span></span>
-<span id="cb6-91"><a href="#cb6-91" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">areaY</span>(norm_area<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="st">"Z"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"PDF"</span><span class="op">,</span> <span class="dt">fillOpacity</span><span class="op">:</span> <span class="fl">0.25</span>})</span>
-<span id="cb6-92"><a href="#cb6-92" aria-hidden="true" tabindex="-1"></a>  ]</span>
-<span id="cb6-93"><a href="#cb6-93" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<div>
-<div id="ojs-cell-5-1" data-nodetype="declaration">
-
-</div>
-</div>
-</div>
-<div class="cell-output cell-output-display">
-<div>
-<div id="ojs-cell-5-2" data-nodetype="declaration">
-
-</div>
-</div>
-</div>
-<div class="cell-output cell-output-display">
-<div>
-<div id="ojs-cell-5-3" data-nodetype="expression">
+<div id="ojs-cell-5" data-nodetype="expression">
 
 </div>
 </div>
@@ -364,7 +372,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 </div>
-</div>
+<p>A work in progress…</p>
 </div>
 </div>
 </div>
@@ -373,7 +381,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </main> <!-- /main -->
 <script type="ojs-module-contents">
-{"contents":[{"methodName":"interpret","cellName":"ojs-cell-1","inline":false,"source":"//| echo: false\nd3 = require(\"d3@7\")\n"},{"methodName":"interpret","cellName":"ojs-cell-2","inline":false,"source":"//| echo: false\n\nfunction set(input, value) {\n  input.value = value;\n  input.dispatchEvent(new Event(\"input\", {bubbles: true}));\n}\n\nviewof direction = Inputs.radio(\n  [\"left\", \"middle\", \"right\", \"two-sided\"],\n  {value: \"left\", label: \"Direction\"}\n)\n\nviewof zscore = Inputs.range(\n  [-3.5, 3.5], \n  {value: 1, step: 0.01, label: \"Z Score:\"}\n)\n\nviewof area = Inputs.range(\n  [0, 1],\n  {value: 0.5, label: \"Area\"}\n)\n\nInputs.button(\"Calculate Z-Score\", () => viewof zscore.value = 2)\nzscore\n"},{"methodName":"interpret","cellName":"ojs-cell-3","inline":false,"source":"//| echo: false\nimport { pnorm, dnorm, plotGraph } from \"../assets/js/pvalue.js\"\n\n{\n  const context = DOM.context2d(480, 270);\n  plotGraph(context, zscore, direction)\n  return context.canvas; \n}\n"},{"methodName":"interpret","cellName":"ojs-cell-4","inline":false,"source":"//| echo: false\npnorm(zscore, direction) \n"},{"methodName":"interpret","cellName":"ojs-cell-5","inline":false,"source":"//| echo: false\nnorm_data = await FileAttachment(\"../assets/documents/normal-table.csv\").csv({ typed: true })\n\nnorm_area = norm_data.map(function(score) {\n  if (direction===\"left\") {\n    return score.Z > zscore ? NaN : score\n  } else if (direction===\"right\") {\n    return score.Z < zscore ? NaN : score\n  } else if (direction===\"middle\") {\n    return -Math.abs(zscore) > score.Z || Math.abs(zscore) < score.Z ? NaN : score\n  } else {\n    return -Math.abs(zscore) < score.Z && Math.abs(zscore) > score.Z ? NaN : score\n  }\n})\n\nPlot.plot({\n  grid: true,\n  style: \"max-width:100%;\",\n  marks: [\n    Plot.line(norm_data, {x: \"Z\", y: \"PDF\"}),\n    Plot.areaY(norm_area, {x: \"Z\", y: \"PDF\", fillOpacity: 0.25})\n  ]\n})\n"},{"methodName":"interpretQuiet","source":"shinyInput('direction')"},{"methodName":"interpretQuiet","source":"shinyInput('zscore')"},{"methodName":"interpretQuiet","source":"shinyInput('area')"}]}
+{"contents":[{"methodName":"interpret","cellName":"ojs-cell-1","inline":false,"source":"//| echo: false\nd3 = require(\"d3@7\")\n"},{"methodName":"interpret","cellName":"ojs-cell-2","inline":false,"source":"//| echo: false\n\nfunction set(input, value) {\n  input.value = value;\n  input.dispatchEvent(new Event(\"input\", {bubbles: true}));\n}\n\nviewof direction = Inputs.radio(\n  [\"left\", \"middle\", \"right\", \"two-sided\"],\n  {value: \"left\", label: \"Direction\"}\n)\n\nviewof zscore = Inputs.range(\n  [-3.5, 3.5], \n  {value: 1, step: 0.01, label: \"Z Score:\"}\n)\n\nviewof area = Inputs.range(\n  [0, 1],\n  {value: 0.5, label: \"Area\"}\n)\n\nInputs.button(\"Calculate Z-Score\", () => viewof zscore.value = 2)\n"},{"methodName":"interpret","cellName":"ojs-cell-3","inline":false,"source":"//| echo: false\nimport { plotGraph } from \"../assets/js/canvas.js\"\nimport { pnorm } from \"../assets/js/normal.js\"\n\n{\n  const context = DOM.context2d(480, 270);\n  plotGraph(context, zscore, direction)\n  return context.canvas; \n} \n"},{"methodName":"interpret","cellName":"ojs-cell-4","inline":false,"source":"//| echo: false\n\nviewof direction2 = Inputs.radio(\n  [\"left\", \"middle\", \"right\", \"two-sided\"],\n  {value: \"left\", label: \"Direction\"}\n)\n\nviewof zscore2 = Inputs.range(\n  [-3.5, 3.5], \n  {value: 1, step: 0.01, label: \"Z Score:\"}\n)\n\nviewof area2 = Inputs.range(\n  [0, 1],\n  {value: 0.5, label: \"Area\"}\n)\n\nInputs.button(\"Calculate Z-Score\", () => viewof zscore2.value = 2)\nzscore2\n"},{"methodName":"interpret","cellName":"ojs-cell-5","inline":false,"source":"//| echo: true\npnorm(1, \"left\")\n"},{"methodName":"interpretQuiet","source":"shinyInput('direction')"},{"methodName":"interpretQuiet","source":"shinyInput('zscore')"},{"methodName":"interpretQuiet","source":"shinyInput('area')"},{"methodName":"interpretQuiet","source":"shinyInput('direction2')"},{"methodName":"interpretQuiet","source":"shinyInput('zscore2')"},{"methodName":"interpretQuiet","source":"shinyInput('area2')"}]}
 </script>
 <script type="module">
 window._ojs.paths.runtimeToDoc = "../../pages";

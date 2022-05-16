@@ -179,6 +179,10 @@ $btn-close-hover-opacity:    1 !default;
 $pre-color:                         inherit !default;
 
 
+// Canvas
+
+$canvas-width:          270px !default;
+$canvas-height:         480px !default;
 
 /*-- scss:rules --*/
 
@@ -274,3 +278,11 @@ $web-font-path: "https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0
     border-color: $secondary;
 }
 
+#pvalue-calculator .quarto-margin-sidebar {
+    width: 0px;
+}
+
+canvas {
+    // width: 10px;
+    // background-color: #00bc8c;
+}

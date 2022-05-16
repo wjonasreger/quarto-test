@@ -9,7 +9,7 @@ d3 = require("d3@7")
 
 ::: {.panel-tabset}
 
-## Normal Distribution (JS)
+## Normal Distribution (Canvas)
 
 ::: {.panel-sidebar}
 ```{ojs}
@@ -36,7 +36,6 @@ viewof area = Inputs.range(
 )
 
 Inputs.button("Calculate Z-Score", () => viewof zscore.value = 2)
-zscore
 ```
 :::
 
@@ -44,53 +43,56 @@ zscore
 
 ```{ojs}
 //| echo: false
-import { pnorm, dnorm, plotGraph } from "../assets/js/pvalue.js"
+import { plotGraph } from "../assets/js/canvas.js"
+import { pnorm } from "../assets/js/normal.js"
 
 {
   const context = DOM.context2d(480, 270);
   plotGraph(context, zscore, direction)
   return context.canvas; 
-}
+} 
 ```
 
 :::
+
+A work in progress...
 
 ## Normal Distribution (OJS)
 
 ::: {.panel-sidebar}
+```{ojs}
+//| echo: false
+
+viewof direction2 = Inputs.radio(
+  ["left", "middle", "right", "two-sided"],
+  {value: "left", label: "Direction"}
+)
+
+viewof zscore2 = Inputs.range(
+  [-3.5, 3.5], 
+  {value: 1, step: 0.01, label: "Z Score:"}
+)
+
+viewof area2 = Inputs.range(
+  [0, 1],
+  {value: 0.5, label: "Area"}
+)
+
+Inputs.button("Calculate Z-Score", () => viewof zscore2.value = 2)
+zscore2
+```
 :::
 
 ::: {.panel-fill layout="[ [1], [1,1] ]"}
-```{ojs}
-//| echo: false
-pnorm(zscore, direction) 
-```
 
 ```{ojs}
-//| echo: false
-norm_data = await FileAttachment("../assets/documents/normal-table.csv").csv({ typed: true })
-
-norm_area = norm_data.map(function(score) {
-  if (direction==="left") {
-    return score.Z > zscore ? NaN : score
-  } else if (direction==="right") {
-    return score.Z < zscore ? NaN : score
-  } else if (direction==="middle") {
-    return -Math.abs(zscore) > score.Z || Math.abs(zscore) < score.Z ? NaN : score
-  } else {
-    return -Math.abs(zscore) < score.Z && Math.abs(zscore) > score.Z ? NaN : score
-  }
-})
-
-Plot.plot({
-  grid: true,
-  style: "max-width:100%;",
-  marks: [
-    Plot.line(norm_data, {x: "Z", y: "PDF"}),
-    Plot.areaY(norm_area, {x: "Z", y: "PDF", fillOpacity: 0.25})
-  ]
-})
+//| echo: true
+pnorm(1, "left")
 ```
+
 :::
+
+A work in progress...
+
 
 :::
